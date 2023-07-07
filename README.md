@@ -13,3 +13,9 @@
 
 ## 👋 리뷰를 요청하던 나는 이제 안녕
 <img width="468" alt="image" src="https://github.com/hocaron/spring-study/assets/66551410/2ebc649b-7fd7-463e-ae8d-ddf3ef518bd0">
+
+## 🤔 재미있는 리뷰 요청(~~재촉~~) 템플릿이에요
+
+1. 굽신형
+
+2. 매력형
