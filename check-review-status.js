@@ -8,7 +8,10 @@ const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
 async function checkReviewStatus() {
     try {
         const octokit = new Octokit();
+        console.log()
         const { owner, repo } = process.env.GITHUB_REPOSITORY.split('/');
+        console.log(process.env.GITHUB_REPOSITORY)
+        console.log(process.env.GITHUB_REPOSITORY.split('/'))
         const number = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
         console.log(process.env.GITHUB_REPOSITORY)
         const pullRequest = await octokit.pulls.get({
