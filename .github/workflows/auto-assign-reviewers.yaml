@@ -17,11 +17,10 @@ jobs:
           # 리뷰어를 설정하려는 규칙에 맞게 코드를 작성하세요.
           REVIEWERS_LIST="hocaron"
           REVIEWERS=($(echo "$REVIEWERS_LIST" | tr ' ' '\n'))
-          PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 
           for reviewer in "${REVIEWERS[@]}"; do
             echo "Adding reviewer: $reviewer"
-            gh pr create --reviewer "$reviewer" --number "$PR_NUMBER"
+            gh pr create --reviewer "$reviewer"
           done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
