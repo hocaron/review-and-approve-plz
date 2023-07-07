@@ -20,7 +20,7 @@ jobs:
 
           for reviewer in "${REVIEWERS[@]}"; do
             echo "Adding reviewer: $reviewer"
-            gh pr create -r "$reviewer"
+            gh pr create --reviewer "$reviewer" --fill
           done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
