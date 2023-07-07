@@ -2,7 +2,7 @@ name: Auto Assign Reviewers
 
 on:
   pull_request:
-    types: [ opened, synchronize, reopened, labeled ]
+    types: [opened, synchronize, reopened, labeled]
 
 jobs:
   assign-reviewer:
@@ -15,11 +15,23 @@ jobs:
       - name: Set Reviewers
         run: |
           # 리뷰어를 설정하려는 규칙에 맞게 코드를 작성하세요.
-          REVIEWERS_LIST="hocaron"
+          REVIEWERS_LIST="jaeyeon93 hocaron test1 test2"
           REVIEWERS=($(echo "$REVIEWERS_LIST" | tr ' ' '\n'))
           PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 
+          # PR을 만든 사람을 가져오는 코드 추가
+          PR_AUTHOR=$(jq --raw-output .pull_request.user.login "$GITHUB_EVENT_PATH")
+
+          # PR을 만든 사람을 제외하고 랜덤으로 2명을 선택하는 코드 추가
+          REVIEWERS_EXCEPT_AUTHOR=()
           for reviewer in "${REVIEWERS[@]}"; do
+            if [ "$reviewer" != "$PR_AUTHOR" ]; then
+              REVIEWERS_EXCEPT_AUTHOR+=("$reviewer")
+            fi
+          done
+          RANDOM_REVIEWERS=($(shuf -e "${REVIEWERS_EXCEPT_AUTHOR[@]}" -n 2))
+
+          for reviewer in "${RANDOM_REVIEWERS[@]}"; do
             echo "Adding reviewer: $reviewer"
             gh pr edit "$PR_NUMBER" --add-reviewer "$reviewer"
           done
