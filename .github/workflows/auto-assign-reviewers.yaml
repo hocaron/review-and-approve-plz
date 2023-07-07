@@ -22,3 +22,5 @@ jobs:
             echo "Adding reviewer: $reviewer"
             gh pr create --reviewer "$reviewer"
           done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
