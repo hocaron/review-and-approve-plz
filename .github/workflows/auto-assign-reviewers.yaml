@@ -22,5 +22,5 @@ jobs:
 
           for reviewer in "${REVIEWERS[@]}"; do
             echo "Adding reviewer: $reviewer"
-            gh pr review-request create --reviewer "$reviewer" --number "$PR_NUMBER"
+            gh pr create --reviewer "$reviewer" --number "$PR_NUMBER"
           done
