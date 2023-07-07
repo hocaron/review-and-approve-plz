@@ -1,0 +1,29 @@
+name: Check Review Status
+
+on:
+  schedule:
+    # 매일 오전 1시에 작동합니다.
+    - cron: "0 13 * * *"
+
+jobs:
+  check-review-status:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check Review Status and Send Slack Notification
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          node check-review-status.js
