@@ -26,5 +26,6 @@ jobs:
       - name: Check Review Status and Send Slack Notification
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           node check-review-status.js
