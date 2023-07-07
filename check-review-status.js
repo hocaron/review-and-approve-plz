@@ -10,7 +10,7 @@ async function checkReviewStatus() {
         const octokit = new Octokit();
         console.log()
         const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
-        const number = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
+        const number = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')).pull_request.number;
         console.log(number)
         const pullRequest = await octokit.pulls.get({
             owner,
