@@ -2,8 +2,7 @@ name: Auto Assign Reviewers
 
 on:
   pull_request:
-    types:
-      - opened
+    types: [ opened, synchronize, reopened, labeled ]
 
 jobs:
   assign-reviewer:
@@ -23,7 +22,7 @@ jobs:
 
           for reviewer in "${REVIEWERS[@]}"; do
             echo "Adding reviewer: $reviewer"
-            gh pr create --reviewer "$reviewer" --title "My Pull Request" --body "This is the description"
+            gh pr update --reviewer "$reviewer"
           done
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
