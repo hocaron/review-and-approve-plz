@@ -1,0 +1,26 @@
+name: Auto Assign Reviewers
+
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  assign-reviewer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set Reviewers
+        run: |
+          # 리뷰어를 설정하려는 규칙에 맞게 코드를 작성하세요.
+          REVIEWERS_LIST="hocaron"
+          REVIEWERS=($(echo "$REVIEWERS_LIST" | tr ' ' '\n'))
+          PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+
+          for reviewer in "${REVIEWERS[@]}"; do
+            echo "Adding reviewer: $reviewer"
+            gh pr review-request create --reviewer "$reviewer" --number "$PR_NUMBER"
+          done
