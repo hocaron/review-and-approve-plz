@@ -2,13 +2,12 @@ const { IncomingWebhook } = require('@slack/webhook');
 const { Octokit } = require('@octokit/rest');
 const fs = require('fs');
 
-// Secrets에서 SLACK_WEBHOOK_URL 값을 가져오거나 직접 입력하세요.
+// Secrets에서 SLACK_WEBHOOK_URL 값을 가져옵니다.
 const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
 
 async function checkReviewStatus() {
     try {
         const octokit = new Octokit();
-        console.log()
         const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
         const number = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')).pull_request.number;
         const pullRequest = await octokit.pulls.get({
