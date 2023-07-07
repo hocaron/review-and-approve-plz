@@ -23,3 +23,5 @@ jobs:
             echo "Adding reviewer: $reviewer"
             gh pr edit "$PR_NUMBER" --add-reviewer "$reviewer"
           done
+        env:
+          GH_TOKEN: ${{ github.token }}
