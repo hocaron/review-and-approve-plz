@@ -2,8 +2,7 @@ name: Auto Assign Reviewers
 
 on:
   pull_request:
-    types:
-      - opened
+    types: [ opened, synchronize, reopened, labeled ]
 
 jobs:
   assign-reviewer:
