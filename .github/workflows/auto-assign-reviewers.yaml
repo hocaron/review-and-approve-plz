@@ -20,7 +20,7 @@ jobs:
 
           for reviewer in "${REVIEWERS[@]}"; do
             echo "Adding reviewer: $reviewer"
-            gh pr create --reviewer "$reviewer"
+            gh pr create --reviewer "$reviewer" --title "My Pull Request" --body "This is the description"
           done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
