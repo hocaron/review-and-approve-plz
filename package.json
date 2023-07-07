@@ -2,6 +2,6 @@
   "name": "review-and-approve-plz",
   "version": "1.0.0",
   "dependencies": {
-    "@slack/webhook": "^6.1.0"
+    "@octokit/rest": "^19.0.13"
   }
 }
