@@ -12,6 +12,7 @@ async function checkReviewStatus() {
         const { owner, repo } = process.env.GITHUB_REPOSITORY.split('/');
         console.log(process.env.GITHUB_REPOSITORY)
         console.log(process.env.GITHUB_REPOSITORY.split('/'))
+        console.log(owner)
         const number = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
         console.log(process.env.GITHUB_REPOSITORY)
         const pullRequest = await octokit.pulls.get({
