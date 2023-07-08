@@ -46,7 +46,7 @@ async function checkReviewStatus() {
                                 {
                                     type: "mrkdwn",
                                     title: '선택받은 리뷰어',
-                                    value: "<@호선우 [회원마케팅서비스개발]>",
+                                    value: "<@U04JA0USXGQ>",
                                 },
                                 {
                                     title: '부탁드린 요청자',
