@@ -44,6 +44,7 @@ async function checkReviewStatus() {
                             title_link: pullRequest.data.html_url,
                             fields: [
                                 {
+                                    type: "markdown",
                                     title: '선택받은 리뷰어',
                                     value: "<@호선우 [회원마케팅서비스개발]>",
                                 },
@@ -53,8 +54,8 @@ async function checkReviewStatus() {
                                     short: true,
                                 },
                             ],
+                            image_url: 'https://i1.ruliweb.com/cmt/23/04/14/18780118f5c482067.jpg',
                             footer: '🔥 따뜻한 관심이 필요해요 🔥',
-                            footer_icon: 'https://i1.ruliweb.com/cmt/23/04/14/18780118f5c482067.jpg',
                             ts: Math.floor(Date.now() / 1000),
                         },
                     ],
