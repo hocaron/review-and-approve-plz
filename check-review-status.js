@@ -45,7 +45,7 @@ async function checkReviewStatus() {
                             fields: [
                                 {
                                     title: '선택받은 리뷰어',
-                                    value: "@호선우 [회원마케팅서비스개발]",
+                                    value: "<@호선우 [회원마케팅서비스개발]>",
                                 },
                                 {
                                     title: '부탁드린 요청자',
