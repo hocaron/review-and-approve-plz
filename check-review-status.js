@@ -44,7 +44,7 @@ async function checkReviewStatus() {
                             title_link: pullRequest.data.html_url,
                             fields: [
                                 {
-                                    type: "markdown",
+                                    type: "mrkdwn",
                                     title: '선택받은 리뷰어',
                                     value: "<@호선우 [회원마케팅서비스개발]>",
                                 },
