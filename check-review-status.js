@@ -16,6 +16,7 @@ async function checkReviewStatus() {
 
         for (const pull of pulls.data) {
             const number = pull.number;
+            console.log("number " + number)
             const pullRequest = await octokit.pulls.get({
                 owner,
                 repo,
