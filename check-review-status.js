@@ -16,6 +16,7 @@ async function checkReviewStatus() {
 
         for (const pull of pulls.data) {
             const number = pull.number;
+            console.log("number " + number)
             const pullRequest = await octokit.pulls.get({
                 owner,
                 repo,
@@ -44,8 +45,9 @@ async function checkReviewStatus() {
                             title_link: pullRequest.data.html_url,
                             fields: [
                                 {
+                                    type: "mrkdwn",
                                     title: '선택받은 리뷰어',
-                                    value: missingReviewersText,
+                                    value: "<@U04JA0USXGQ>",
                                 },
                                 {
                                     title: '부탁드린 요청자',
@@ -53,8 +55,8 @@ async function checkReviewStatus() {
                                     short: true,
                                 },
                             ],
+                            image_url: 'https://i1.ruliweb.com/cmt/23/04/14/18780118f5c482067.jpg',
                             footer: '🔥 따뜻한 관심이 필요해요 🔥',
-                            footer_icon: 'https://i1.ruliweb.com/cmt/23/04/14/18780118f5c482067.jpg',
                             ts: Math.floor(Date.now() / 1000),
                         },
                     ],

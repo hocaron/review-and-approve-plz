@@ -4,7 +4,8 @@ on:
   schedule:
     # 매일 오전 1시에 작동합니다.
     - cron: "0 13 * * *"
-  types: [ opened, synchronize, reopened, labeled ]
+  pull_request:
+    types: [ opened, synchronize, reopened, labeled ]
 
 jobs:
   check-review-status:
