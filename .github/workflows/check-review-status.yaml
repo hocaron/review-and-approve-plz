@@ -3,7 +3,7 @@ name: Check Review Status
 on:
   schedule:
     # 매일 오전 1시에 작동합니다.
-    - cron: "0 13 * * *"
+    - cron: "0 2 * * *"
   pull_request:
     types: [ opened, synchronize, reopened, labeled ]
 
